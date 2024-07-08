@@ -6,6 +6,19 @@ import datetime
 # Title of the app
 st.title("Company Layoffs Data Analysis and Prediction App")
 
+# Function to load the dataset
+@st.cache_data
+def load_data(file_path):
+    return pd.read_csv(file_path)
+
+# Load the data
+file_path = "layoffs_data.csv"  # Replace with the path to your CSV file
+data = load_data(file_path)
+
+# Display the dataset
+st.subheader("Dataset")
+st.write(data)
+
 # Filter by Company
 company = st.sidebar.multiselect("Select Company", options=data["Company"].unique())
 if company:
@@ -60,4 +73,3 @@ if st.sidebar.button("Predict"):
     prediction = model.predict(input_df)
     st.subheader("Prediction")
     st.write(prediction)
-
