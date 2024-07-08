@@ -1,4 +1,4 @@
 streamlit 
 pandas 
 datetime
-sklearn
+scikit-learn
